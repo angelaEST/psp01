@@ -10,7 +10,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
 
-public class App extends HttpServlet {
+public class PaintingWeb extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {   
@@ -28,7 +28,7 @@ public class App extends HttpServlet {
     ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
     context.setContextPath("/");
     server.setHandler(context);
-    context.addServlet(new ServletHolder(new App()),"/*");
+    context.addServlet(new ServletHolder(new PaintingWeb()),"/*");
     server.start();
     server.join();
   }

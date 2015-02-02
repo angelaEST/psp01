@@ -6,7 +6,7 @@
 package edu.uniandes.ecos;
 
 
-import edu.uniandes.ecos.conteo.Contador;
+import edu.uniandes.ecos.mundo.Contador;
 import java.io.File;
 import java.util.Arrays;
 
@@ -14,9 +14,9 @@ import java.util.Arrays;
  *
  * @author Angela Edith Suárez Torres
  */
-public class PresentacionApp {
+public class PaintingText {
 
-    public void presentarConteo() {
+    public static void  main (String[] args) {
         Contador c = new Contador();
         File directorio = new File(System.getProperty("user.dir") + File.separator + 
                 "target" + File.separator + "classes" +
