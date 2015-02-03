@@ -10,10 +10,13 @@ import edu.uniandes.ecos.mundo.Contador;
 import java.io.File;
 import java.util.Arrays;
 
-/**
- *
- * @author Angela Edith Suárez Torres
- */
+/******************************************************************/
+/* Program Assignment:2                                                        
+/* Name: Angela Edith Suárez Torres                                                                                  
+/* Date: 31/05/15                  
+/* Description: Presenta por consola los resultados del conteo ejecutado al tamaño del programa, sus clases y métodos
+/******************************************************************/
+
 public class PaintingText {
 
     public static void  main (String[] args) {

@@ -24,6 +24,17 @@ public class Contador {
     private int cantidadMetodos;
     private StringBuilder valoresAcumulados;
 
+    private static final String PALABRA_CLAVE_CLASS = "class ";
+    private static final String PALABRA_CLAVE_FOR = "for ";
+    private static final String PALABRA_CLAVE_WHILE = "while ";
+    private static final String PALABRA_CLAVE_ELSE = "else ";
+    private static final String PALABRA_CLAVE_IF = "if ";
+    private static final String PALABRA_CLAVE_TRY = "try ";
+    private static final String PALABRA_CLAVE_CATCH = "catch ";
+    private static final String PALABRA_CLAVE_SYSTEM = "System ";
+    private static final String PALABRA_CLAVE_DO = "do ";
+    private static final String PALABRA_CLAVE_ENUM = "ENUM ";
+
     public Contador() {
         valoresAcumulados = new StringBuilder();
     }
@@ -42,10 +53,10 @@ public class Contador {
             File archivoLectura = new File(url + File.separator + directorio1);
             if (archivoLectura.isDirectory()) {
                 cantidadDirectorios++;
-                
+
                 contadorClases(archivoLectura.getPath(), archivoLectura.list());
             } else {
-                cantidadClases++;                
+                cantidadClases++;
                 contadorLineas(archivoLectura, url);
             }
 
@@ -65,30 +76,31 @@ public class Contador {
                 } else {
                     String sValoresAcumulados = valoresAcumulados.toString();
                     if (sValoresAcumulados.length() > 0) {
-                        if ((!sValoresAcumulados.contains("class"))
-                                && !sValoresAcumulados.contains("for")
-                                && !sValoresAcumulados.contains("while")
-                                && !sValoresAcumulados.contains("else")
-                                && !sValoresAcumulados.contains("if")
-                                && !sValoresAcumulados.contains("try")
-                                && !sValoresAcumulados.contains("catch")
-                                && !sValoresAcumulados.contentEquals("do")
-                                && !sValoresAcumulados.contains("System")) {
+                        if ((!sValoresAcumulados.contains(PALABRA_CLAVE_CLASS))
+                                && !sValoresAcumulados.contains(PALABRA_CLAVE_FOR)
+                                && !sValoresAcumulados.contains(PALABRA_CLAVE_WHILE)
+                                && !sValoresAcumulados.contains(PALABRA_CLAVE_ELSE)
+                                && !sValoresAcumulados.contains(PALABRA_CLAVE_IF)
+                                && !sValoresAcumulados.contains(PALABRA_CLAVE_TRY)
+                                && !sValoresAcumulados.contains(PALABRA_CLAVE_CATCH)
+                                && !sValoresAcumulados.contains(PALABRA_CLAVE_DO)
+                                && !sValoresAcumulados.contains(PALABRA_CLAVE_ENUM)
+                                && !sValoresAcumulados.contains(PALABRA_CLAVE_SYSTEM)) {
                             cantidadMetodos++;
                             valoresAcumulados = new StringBuilder();
                         }
                     } else {
-                        if (!valor.contains("class")
-                                && !valor.contains("for")
-                                && !valor.contains("while")
-                                && !valor.contains("else")
-                                && !valor.contains("if")
-                                && !valor.contains("try")
-                                && !valor.contains("catch")
-                                && !valor.contentEquals("do")
-                                && !valor.contains("System")) {
+                        if (!valor.contains(PALABRA_CLAVE_CLASS)
+                                && !valor.contains(PALABRA_CLAVE_FOR)
+                                && !valor.contains(PALABRA_CLAVE_WHILE)
+                                && !valor.contains(PALABRA_CLAVE_ELSE)
+                                && !valor.contains(PALABRA_CLAVE_IF)
+                                && !valor.contains(PALABRA_CLAVE_TRY)
+                                && !valor.contains(PALABRA_CLAVE_CATCH)
+                                && !valor.contains(PALABRA_CLAVE_DO)
+                                && !valor.contains(PALABRA_CLAVE_ENUM)
+                                && !valor.contains(PALABRA_CLAVE_SYSTEM)) {
                             cantidadMetodos++;
-                            
                         }
                     }
                 }
@@ -105,12 +117,7 @@ public class Contador {
      * @param archivo Archivo donde ejecutará el conteo de líneas
      * @param url Ubicación del archivo
      */
-    public
-            void
-            contadorLineas(
-                    File archivo,
-                    String url
-            ) {
+    public void contadorLineas(File archivo, String url) {
 
         BufferedReader reader = null;
         FileReader fileReader = null;
@@ -121,14 +128,14 @@ public class Contador {
             try {
                 fileReader = new FileReader(archivo);
                 reader = new BufferedReader(fileReader);
-                System.out.println("\n" + "************" + archivo.getName() + "**************" + "\n");
+                System.out.println("\n" + "********    " + archivo.getName() + "   **************" + "\n");
                 System.out.println("Estoy en el directorio: " + archivo.getParent() + "\n");
                 while ((valor = reader.readLine()) != null) {
                     if (valor != null && valor.trim().length() > 0 && valor.trim().charAt(0) != '/' && !valor.trim().startsWith("*")) {
                         contadorMetodos(valor);
                         contador++;
                     }
-
+                    
                 }
                 System.out.println("Cantidad de Lineas : " + contador + "\n");
             } catch (FileNotFoundException ex) {
